@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { loadingBarMiddleware } from 'react-redux-loading-bar';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import reducers from './reducers';
 import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(() => {},
-applyMiddleware(loadingBarMiddleware(), sagaMiddleware));
+const store = createStore(reducers, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
