@@ -7,6 +7,7 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import reducers from './reducers';
 import rootSaga from './sagas';
+import './css/index.css';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, applyMiddleware(sagaMiddleware));
