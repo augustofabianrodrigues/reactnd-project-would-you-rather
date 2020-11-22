@@ -5,7 +5,7 @@ import { handleInitialData } from './shared';
 
 /**
  * Spawns given sagas, restarting them if they throw any uncaught error.
- * @param  {...any} sagas The sagas to spawn and keep alive
+ * @param  {...Generator} sagas The sagas to spawn and keep alive
  */
 function* keepAlive(...sagas) {
   yield all(
