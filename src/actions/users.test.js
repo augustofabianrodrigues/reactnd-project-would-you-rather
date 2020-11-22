@@ -1,6 +1,6 @@
-import { RECEIVE_USERS, receiveUsers } from './users';
+import { RECEIVE_USERS, ADD_USER, receiveUsers, addUser } from './users';
 
-test('receiveUsers returns with the users it was given', () => {
+test('receiveUsers', () => {
   const users = {
     sarahedo: {
       id: 'sarahedo',
@@ -81,6 +81,32 @@ test('receiveUsers returns with the users it was given', () => {
           },
           questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
         },
+      },
+    },
+  });
+});
+
+test('addUser', () => {
+  const user = {
+    id: 'johndoe',
+    name: 'John Doe',
+    avatarURL:
+      'https://avataaars.io/?accessoriesType=Prescription01&avatarStyle=Circle&clotheColor=Heather&clotheType=CollarSweater&eyeType=Side&eyebrowType=UpDown&facialHairColor=Brown&facialHairType=BeardMedium&graphicType=Bat&hairColor=BlondeGolden&hatColor=PastelYellow&mouthType=Eating&skinColor=Pale&topType=WinterHat1',
+    answers: {},
+    questions: [],
+  };
+
+  const action = addUser(user);
+  expect(action).toEqual({
+    type: ADD_USER,
+    payload: {
+      user: {
+        id: 'johndoe',
+        name: 'John Doe',
+        avatarURL:
+          'https://avataaars.io/?accessoriesType=Prescription01&avatarStyle=Circle&clotheColor=Heather&clotheType=CollarSweater&eyeType=Side&eyebrowType=UpDown&facialHairColor=Brown&facialHairType=BeardMedium&graphicType=Bat&hairColor=BlondeGolden&hatColor=PastelYellow&mouthType=Eating&skinColor=Pale&topType=WinterHat1',
+        answers: {},
+        questions: [],
       },
     },
   });

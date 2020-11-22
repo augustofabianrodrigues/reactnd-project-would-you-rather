@@ -131,6 +131,29 @@ export function _getUsers() {
   });
 }
 
+function formatUser({ name, avatarURL }) {
+  return {
+    id: generateUID(),
+    name,
+    avatarURL,
+    answers: {},
+    questions: [],
+  };
+}
+
+export function _addUser(user) {
+  const newUser = formatUser(user);
+
+  users = {
+    ...users,
+    [newUser.id]: newUser,
+  };
+
+  return new Promise((res, rej) => {
+    setTimeout(() => res(newUser), 1000);
+  });
+}
+
 export function _getQuestions() {
   return new Promise((res, rej) => {
     setTimeout(() => res({ ...questions }), 1000);

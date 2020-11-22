@@ -87,7 +87,7 @@ test('receiveQuestions', () => {
     },
   };
 
-  let nextState = questions({}, receiveQuestions(questions1));
+  let nextState = questions(undefined, receiveQuestions(questions1));
   expect(nextState).toEqual(questions1);
   nextState = questions(nextState, receiveQuestions(questions2));
   expect(nextState).toEqual({ ...questions1, ...questions2 });

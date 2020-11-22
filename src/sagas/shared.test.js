@@ -5,7 +5,7 @@ import { receiveUsers } from '../actions/users';
 import { getInitialData } from '../utils/api';
 import { handleInitialData } from './shared';
 
-test('handleInitialData put showLoading, call getInitialData, put receiveUsers, put receiveQuestions, and call hideLoading', () => {
+test('handleInitialData', () => {
   const users = {
     sarahedo: {
       id: 'sarahedo',
