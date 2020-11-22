@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { LoadingBar } from 'react-redux-loading-bar';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Auth from './auth/Auth';
 
 function setNavigationBarHeightCSSVariable() {
   const vh = window.innerHeight * 0.01;
@@ -17,21 +20,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="h-screen-nav-fix w-screen overflow-hidden bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50">
-        <header className="prose">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div className="h-screen-nav-fix w-screen font-montserrat overflow-hidden bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50">
+          <LoadingBar />
+          <Route path="*" component={Auth} />
+        </div>
+      </Router>
     );
   }
 }
