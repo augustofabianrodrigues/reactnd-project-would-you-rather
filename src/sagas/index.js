@@ -1,4 +1,5 @@
 import { all, call, spawn } from 'redux-saga/effects';
+import { authFlow } from './auth';
 import { watchAndLog } from './logger';
 import { handleInitialData } from './shared';
 
@@ -39,5 +40,5 @@ function* keepAlive(...sagas) {
 }
 
 export default function* rootSaga() {
-  yield keepAlive(watchAndLog, handleInitialData);
+  yield keepAlive(watchAndLog, authFlow, handleInitialData);
 }
