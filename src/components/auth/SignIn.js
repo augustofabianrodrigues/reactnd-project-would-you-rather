@@ -46,7 +46,7 @@ function SignIn(props) {
 
   return (
     <form className="w-full flex flex-col space-y-8">
-      <h3 className="text-xl font-semibold uppercase text-purple-700">
+      <h3 className="text-xl font-semibold uppercase text-purple-700 dark:text-purple-400">
         Sign In
       </h3>
 

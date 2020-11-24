@@ -25,7 +25,7 @@ function Auth(props) {
       </header>
 
       <div className="flex flex-col flex-grow space-y-12 lg:flex-grow-0 lg:flex-shrink min-w-max p-4 lg:p-8 bg-gray-50 dark:bg-gray-800">
-        <main className="lg:w-96 lg:m-auto">
+        <main className="lg:w-96 mb-auto lg:m-auto">
           <Switch>
             <Route
               exact
