@@ -1,5 +1,6 @@
 module.exports = {
-  darkMode: 'media',
+  darkMode: 'class',
+  // darkMode: 'media',
   purge: [
     'src/**/*.js',
     'src/**/*.jsx',
@@ -15,5 +16,5 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };
