@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import { pathJoin } from '../../utils/helpers';
+import AuthFooter from './AuthFooter';
 
 function Auth(props) {
   const { match } = props;
@@ -38,7 +39,7 @@ function Auth(props) {
           </Switch>
         </main>
 
-        <footer>Made with love</footer>
+        <AuthFooter />
       </div>
     </div>
   );
