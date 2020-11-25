@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import { pathJoin } from '../../utils/helpers';
 import AuthFooter from './AuthFooter';
-import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 function Auth(props) {
   const { location, match } = props;
@@ -45,8 +45,11 @@ function Auth(props) {
                   path={pathJoin(match.path, 'sign-up')}
                   component={SignUp}
                 />
-                <Route path={pathJoin(match.path, '*')}>
+                <Route exact path={pathJoin(match.path, 'sign-in')}>
                   <SignIn signUpUrl={pathJoin(match.url, 'sign-up')} />
+                </Route>
+                <Route>
+                  <Redirect to={pathJoin(match.url, 'sign-in')} />
                 </Route>
               </Switch>
             </CSSTransition>

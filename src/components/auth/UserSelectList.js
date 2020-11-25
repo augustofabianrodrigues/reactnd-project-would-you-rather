@@ -6,6 +6,7 @@ import UserSelectListItem from './UserSelectListItem';
 class UserSelectList extends Component {
   static propTypes = {
     users: PropTypes.array.isRequired,
+    onSelect: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -30,6 +31,13 @@ class UserSelectList extends Component {
         open: false,
       }));
     }
+  };
+
+  handleUserSelect = (user) => {
+    this.setState(() => ({
+      open: false,
+    }));
+    this.props.onSelect(user);
   };
 
   componentDidMount() {
@@ -95,7 +103,11 @@ class UserSelectList extends Component {
                 className=" max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
               >
                 {this.props.users.map((user) => (
-                  <UserSelectListItem key={user.id} user={user} />
+                  <UserSelectListItem
+                    key={user.id}
+                    user={user}
+                    onClick={() => this.handleUserSelect(user)}
+                  />
                 ))}
               </ul>
             </div>
