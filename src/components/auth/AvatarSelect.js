@@ -5,7 +5,7 @@ import ImageInput from '../shared/ImageInput';
 
 class AvatarSelect extends Component {
   static propTypes = {
-    avatarUrl: PropTypes.string.isRequired,
+    avatarURL: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
   };
 
@@ -25,7 +25,7 @@ class AvatarSelect extends Component {
         </label>
         <div className="flex gap-5 items-center">
           <span className="flex flex-shrink-0 h-14 sm:h-16 xl:h-18 w-14 sm:w-16 xl:w-18 rounded-full overflow-hidden">
-            <img alt="Your Avatar" src={this.props.avatarUrl} />
+            <img alt="Your Avatar" src={this.props.avatarURL} />
           </span>
 
           <div className="flex flex-grow flex-row flex-wrap gap-1">
