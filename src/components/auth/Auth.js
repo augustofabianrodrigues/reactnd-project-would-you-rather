@@ -28,8 +28,8 @@ function Auth(props) {
         </header>
       </div>
 
-      <div className="flex-grow lg:flex-grow-0 lg:flex-shrink bg-gray-50 dark:bg-gray-800">
-        <div className="h-full flex flex-col space-y-12  mx-auto w-full max-w-xl lg:max-w-lg p-4 lg:p-8">
+      <div className="lg:w-2/5 xl:w-1/3 2xl:w-1/4 flex-grow lg:flex-grow-0 lg:flex-shrink bg-gray-50 dark:bg-gray-800">
+        <div className="h-full flex flex-col space-y-12 mx-auto w-full max-w-xl lg:max-w-lg p-4 lg:p-8">
           <main className="w-full mb-auto lg:m-auto">
             <SwitchTransition mode="out-in">
               <CSSTransition
