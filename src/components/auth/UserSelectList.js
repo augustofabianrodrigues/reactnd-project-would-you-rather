@@ -53,7 +53,7 @@ class UserSelectList extends Component {
       <div>
         <label
           id="listbox-label"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-100"
+          className="block font-medium text-gray-700 dark:text-gray-100"
         >
           Please sign in to continue
         </label>
@@ -63,7 +63,7 @@ class UserSelectList extends Component {
             aria-haspopup="listbox"
             aria-expanded="true"
             aria-labelledby="listbox-label"
-            className="relative w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-800 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="relative w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-800 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
             onClick={this.toggleOpen}
           >
             <span className="flex items-center">

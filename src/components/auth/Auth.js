@@ -40,11 +40,9 @@ function Auth(props) {
               }}
             >
               <Switch location={location}>
-                <Route
-                  exact
-                  path={pathJoin(match.path, 'sign-up')}
-                  component={SignUp}
-                />
+                <Route exact path={pathJoin(match.path, 'sign-up')}>
+                  <SignUp signInUrl={pathJoin(match.url, 'sign-in')} />
+                </Route>
                 <Route exact path={pathJoin(match.path, 'sign-in')}>
                   <SignIn signUpUrl={pathJoin(match.url, 'sign-up')} />
                 </Route>
