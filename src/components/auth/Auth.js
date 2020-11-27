@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
@@ -65,8 +65,9 @@ function Auth(props) {
 }
 
 Auth.propTypes = {
-  location: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
-export default Auth;
+export default withRouter(Auth);

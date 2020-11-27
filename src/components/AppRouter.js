@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import Auth from './auth/Auth';
 import { connect } from 'react-redux';
 
@@ -57,4 +57,5 @@ function mapStateToProps({ authedUser }, props) {
   };
 }
 
-export default connect(mapStateToProps)(AppRouter);
+const AppRouterContainer = connect(mapStateToProps)(AppRouter);
+export default withRouter(AppRouterContainer);

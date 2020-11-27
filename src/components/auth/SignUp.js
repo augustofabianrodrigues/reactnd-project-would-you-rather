@@ -97,7 +97,7 @@ class SignUp extends Component {
                 }
               )}
             >
-              Please type your name. We wanna know how to call you!
+              Please type your name. We want to know you!
             </div>
           }
         </div>
