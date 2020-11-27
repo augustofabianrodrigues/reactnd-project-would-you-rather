@@ -4,6 +4,7 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import Auth from './auth/Auth';
 import { connect } from 'react-redux';
+import PrivateRouter from './private/PrivateRouter';
 
 function AppRouter(props) {
   const { location, isAuthenticated } = props;
@@ -24,22 +25,13 @@ function AppRouter(props) {
         }}
       >
         <Switch location={location}>
-          <Route
-            path="/auth"
-            render={(props) =>
-              isAuthenticated ? <Redirect push to="/" /> : <Auth {...props} />
-            }
-          />
+          <Route path="/auth">
+            {isAuthenticated ? <Redirect push to="/" /> : <Auth />}
+          </Route>
 
-          <Route
-            render={(props) =>
-              isAuthenticated ? (
-                <div>You're in!</div>
-              ) : (
-                <Redirect push to="/auth" />
-              )
-            }
-          />
+          <Route>
+            {isAuthenticated ? <PrivateRouter /> : <Redirect push to="/auth" />}
+          </Route>
         </Switch>
       </CSSTransition>
     </SwitchTransition>

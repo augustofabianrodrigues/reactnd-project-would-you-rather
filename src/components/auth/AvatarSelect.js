@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getRandomAvatarUrl } from '../../utils/helpers';
 import ImageInput from '../shared/ImageInput';
+import Avatar from '../shared/Avatar';
 
 class AvatarSelect extends Component {
   static propTypes = {
@@ -24,9 +25,7 @@ class AvatarSelect extends Component {
           Avatar
         </label>
         <div className="flex gap-5 items-center">
-          <span className="flex flex-shrink-0 h-14 sm:h-16 xl:h-18 w-14 sm:w-16 xl:w-18 rounded-full overflow-hidden">
-            <img alt="Your Avatar" src={this.props.avatarURL} />
-          </span>
+          <Avatar avatarURL={this.props.avatarURL} description="Your Avatar" />
 
           <div className="flex flex-grow flex-row flex-wrap gap-1">
             <ImageInput

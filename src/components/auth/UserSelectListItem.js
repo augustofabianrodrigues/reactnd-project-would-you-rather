@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Avatar from '../shared/Avatar';
 
 function UserSelectListItem(props) {
   return (
@@ -12,10 +13,10 @@ function UserSelectListItem(props) {
       onClick={props.onClick}
     >
       <div className="flex items-center">
-        <img
-          src={props.user.avatarURL}
-          alt={`${props.user.name}'s Avatar`}
-          className="flex-shrink-0 h-6 w-6 rounded-full"
+        <Avatar
+          size="small"
+          avatarURL={props.user.avatarURL}
+          description={`${props.user.name}'s Avatar`}
         />
         <span className="ml-3 block font-normal truncate">
           {props.user.name}
