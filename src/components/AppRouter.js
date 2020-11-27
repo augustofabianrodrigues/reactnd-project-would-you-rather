@@ -47,7 +47,9 @@ function AppRouter(props) {
 }
 
 AppRouter.propTypes = {
+  match: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 function mapStateToProps({ authedUser }, props) {

@@ -33,7 +33,7 @@ function Auth(props) {
           <main className="w-full mb-auto lg:m-auto">
             <SwitchTransition mode="out-in">
               <CSSTransition
-                key={location.pathname}
+                key={location.key}
                 timeout={500}
                 classNames={{
                   enter: 'opacity-0',
