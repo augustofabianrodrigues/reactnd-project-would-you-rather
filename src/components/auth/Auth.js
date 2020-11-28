@@ -23,7 +23,7 @@ function Auth(props) {
           <img
             alt="Would You Rather Hero"
             src={require('../../illustrations/hero.svg').default}
-            className="bg-no-repeat bg-contain bg-fixed p-4 w-full max-w-xl"
+            className="bg-no-repeat bg-contain bg-fixed p-4 w-auto max-w-xl h-52 sm:h-96"
           />
         </header>
       </div>
