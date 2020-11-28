@@ -7,7 +7,7 @@ const classNamesBySizes = {
   small: 'h-8 w-8',
   medium: 'h-12 w-12',
   large: 'h-14 w-14',
-  responsive: 'sm:h-16 xl:h-18 sm:w-16 xl:w-18',
+  responsive: 'h-14 w-14 sm:h-16 lg:h-18 sm:w-16 lg:w-18',
 };
 
 function Avatar(props) {
