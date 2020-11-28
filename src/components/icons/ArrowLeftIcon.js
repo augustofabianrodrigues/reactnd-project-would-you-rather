@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ArrowLeft = (props) => {
+const ArrowLeftIcon = (props) => {
   return (
     <i className={props.className}>
       <svg
@@ -30,9 +30,9 @@ const ArrowLeft = (props) => {
   );
 };
 
-ArrowLeft.propTypes = {
+ArrowLeftIcon.propTypes = {
   className: PropTypes.string,
   svgClassName: PropTypes.string,
 };
 
-export default ArrowLeft;
+export default ArrowLeftIcon;

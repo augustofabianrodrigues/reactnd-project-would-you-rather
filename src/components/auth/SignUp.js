@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ArrowLeft from '../icons/ArrowLeft';
+import ArrowLeftIcon from '../icons/ArrowLeftIcon';
 import { getRandomAvatarUrl, getRandomName } from '../../utils/helpers';
 import AvatarSelect from './AvatarSelect';
 import { signUp } from '../../actions/auth';
@@ -131,7 +131,7 @@ class SignUp extends Component {
             to={signInUrl}
             className="relative block w-full py-2 px-4 border border-gray-300 dark:border-gray-800 rounded font-medium text-center uppercase focus:outline-none focus:ring-1 focus:ring-gray-700 dark:focus:ring-gray-100 focus:border-gray-700 dark:focus:border-gray-100 bg-white dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600"
           >
-            <ArrowLeft
+            <ArrowLeftIcon
               className="absolute left-2 top-2"
               svgClassName="h-6 w-6 text-gray-400"
             />

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Avatar from '../shared/Avatar';
 import { logout } from '../../actions/auth';
+import LogOutIcon from '../icons/LogOutIcon';
+import ThemeToggle from './ThemeToggle';
 
 class AppHeader extends Component {
   static propTypes = {
@@ -24,22 +26,31 @@ class AppHeader extends Component {
     const { name, avatarURL } = user;
 
     return (
-      <header className="w-full h-14 px-4 flex flex-row items-center justify-between flex-nowrap shadow-md">
-        <div className="flex flex-row gap-x-2 items-center">
-          <Avatar
-            size="medium"
-            avatarURL={avatarURL}
-            description="Your Avatar"
-          />
-          <h1 className="xs:hidden text-sm md:text-base font-medium overflow-hidden truncate">
-            Hello, {name}.
-          </h1>
-        </div>
+      <div className="w-full h-auto shadow-md px-4">
+        <header className="w-full max-w-7xl h-14 mx-auto flex flex-row items-center justify-between flex-nowrap">
+          <div className="flex flex-row gap-x-2 items-center overflow-hidden max-h-full">
+            <Avatar
+              size="small"
+              avatarURL={avatarURL}
+              description="Your Avatar"
+            />
+            <h1 className="block text-sm md:text-base font-medium truncate">
+              Hello, {name}
+            </h1>
+          </div>
 
-        <div className="flex flex-row gap-x-2 items-center">
-          <button onClick={this.handleLogout}>Logout</button>
-        </div>
-      </header>
+          <div className="flex flex-row gap-x-4 lg:gap-x-8 items-center">
+            <ThemeToggle />
+
+            <button
+              onClick={this.handleLogout}
+              className="text-xs flex flex-col gap-1 p-1 items-center"
+            >
+              <LogOutIcon svgClassName="h-6 w-6" />
+            </button>
+          </div>
+        </header>
+      </div>
     );
   }
 }
