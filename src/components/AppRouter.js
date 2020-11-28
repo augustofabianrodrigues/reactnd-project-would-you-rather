@@ -18,10 +18,8 @@ function AppRouter(props) {
         key={transitionKey}
         timeout={500}
         classNames={{
-          enter: 'opacity-0',
-          enterActive: 'opacity-100 transition-opacity duration-500',
           exitActive:
-            'opacity-0 transform translate-x-full transition duration-500',
+            'opacity-0 transform lg:transform-none translate-x-full transition duration-500 ease-out',
         }}
       >
         <Switch location={location}>
