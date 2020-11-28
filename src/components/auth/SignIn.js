@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import UserSelectList from './UserSelectList';
 import { signIn } from '../../actions/auth';
+import AppTitle from '../shared/AppTitle';
 
 class SignIn extends Component {
   static propTypes = {
@@ -19,6 +20,8 @@ class SignIn extends Component {
 
     return (
       <form className="w-full flex flex-col space-y-8">
+        <AppTitle value="Sign In" />
+
         <h3 className="text-xl font-semibold uppercase text-purple-700 dark:text-purple-400">
           Sign In
         </h3>

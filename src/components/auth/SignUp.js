@@ -7,6 +7,7 @@ import ArrowLeft from '../icons/ArrowLeft';
 import { getRandomAvatarUrl, getRandomName } from '../../utils/helpers';
 import AvatarSelect from './AvatarSelect';
 import { signUp } from '../../actions/auth';
+import AppTitle from '../shared/AppTitle';
 
 class SignUp extends Component {
   static propTypes = {
@@ -63,6 +64,8 @@ class SignUp extends Component {
         className="w-full flex flex-col space-y-8"
         onSubmit={this.handleSubmit}
       >
+        <AppTitle value="Sign Up" />
+
         <h3 className="text-xl font-semibold uppercase text-purple-700 dark:text-purple-400">
           Sign Up
         </h3>
