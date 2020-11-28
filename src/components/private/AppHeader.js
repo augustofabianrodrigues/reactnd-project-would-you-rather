@@ -26,11 +26,11 @@ class AppHeader extends Component {
     const { name, avatarURL } = user;
 
     return (
-      <div className="w-full h-auto shadow-md px-4">
+      <div className="w-full h-auto shadow-md dark:bg-gray-700 px-4">
         <header className="w-full max-w-7xl h-14 mx-auto flex flex-row items-center justify-between flex-nowrap">
           <div className="flex flex-row gap-x-2 items-center overflow-hidden max-h-full">
             <Avatar
-              size="small"
+              size="medium"
               avatarURL={avatarURL}
               description="Your Avatar"
             />

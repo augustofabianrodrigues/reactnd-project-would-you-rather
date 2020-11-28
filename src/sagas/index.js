@@ -2,6 +2,7 @@ import { all, call, spawn } from 'redux-saga/effects';
 import { authFlow } from './auth';
 import { watchAndLog } from './logger';
 import { handleInitialData } from './shared';
+import { handleThemeLoad, watchToggleTheme } from './theme';
 
 /**
  * Spawns given sagas, restarting them if they throw any uncaught error.
@@ -40,5 +41,11 @@ function* keepAlive(...sagas) {
 }
 
 export default function* rootSaga() {
-  yield keepAlive(watchAndLog, authFlow, handleInitialData);
+  yield keepAlive(
+    watchAndLog,
+    authFlow,
+    watchToggleTheme,
+    handleThemeLoad,
+    handleInitialData
+  );
 }
