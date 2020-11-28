@@ -15,6 +15,10 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      translate: ['motion-safe'],
+    },
+  },
   plugins: [require('@tailwindcss/forms')],
 };

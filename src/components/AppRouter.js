@@ -19,7 +19,7 @@ function AppRouter(props) {
         timeout={500}
         classNames={{
           exitActive:
-            'opacity-0 transform lg:transform-none translate-x-full transition duration-500 ease-out',
+            'opacity-0 transform lg:transform-none motion-safe:translate-x-full transition duration-500 ease-out',
         }}
       >
         <Switch location={location}>
