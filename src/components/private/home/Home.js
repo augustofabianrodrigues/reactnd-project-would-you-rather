@@ -35,7 +35,7 @@ function Home(props) {
       <div>
         <SwitchTransition mode="out-in">
           <CSSTransition
-            key={location.key}
+            key={location.pathname}
             timeout={500}
             classNames={{
               enter:
