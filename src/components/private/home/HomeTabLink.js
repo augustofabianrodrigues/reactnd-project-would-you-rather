@@ -6,7 +6,7 @@ function HomeTabLink(props) {
   return (
     <NavLink
       to={props.to}
-      className="flex flex-col flex-1 items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700"
+      className="flex flex-col flex-1 items-center justify-center text-sm hover:bg-gray-200 dark:hover:bg-gray-700"
       activeClassName="bg-gray-100 dark:bg-gray-900 font-semibold text-indigo-500 dark:text-purple-400 cursor-default"
     >
       {props.children}

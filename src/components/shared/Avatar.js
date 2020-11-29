@@ -29,7 +29,6 @@ function Avatar(props) {
 Avatar.propTypes = {
   avatarURL: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  responsive: PropTypes.bool,
   size: PropTypes.oneOf(['smallest', 'small', 'medium', 'large', 'responsive']),
   className: PropTypes.string,
 };
