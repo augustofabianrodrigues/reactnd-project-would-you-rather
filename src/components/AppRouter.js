@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import Auth from './auth/Auth';
 import { connect } from 'react-redux';
 import PrivateRouter from './private/PrivateRouter';
+import RouteSwitchTransition from './shared/RouteSwitchTransition';
 
 function AppRouter(props) {
   const { location, isAuthenticated } = props;
@@ -13,26 +13,17 @@ function AppRouter(props) {
   const transitionKey = isAuthenticated ? 'authed' : 'not-authed';
 
   return (
-    <SwitchTransition mode="out-in">
-      <CSSTransition
-        key={transitionKey}
-        timeout={500}
-        classNames={{
-          exitActive:
-            'opacity-0 transform lg:transform-none motion-safe:translate-x-full transition duration-500 ease-out',
-        }}
-      >
-        <Switch location={location}>
-          <Route path="/auth">
-            {isAuthenticated ? <Redirect push to="/" /> : <Auth />}
-          </Route>
+    <RouteSwitchTransition transitionKey={transitionKey}>
+      <Switch location={location}>
+        <Route path="/auth">
+          {isAuthenticated ? <Redirect push to="/" /> : <Auth />}
+        </Route>
 
-          <Route>
-            {isAuthenticated ? <PrivateRouter /> : <Redirect push to="/auth" />}
-          </Route>
-        </Switch>
-      </CSSTransition>
-    </SwitchTransition>
+        <Route>
+          {isAuthenticated ? <PrivateRouter /> : <Redirect push to="/auth" />}
+        </Route>
+      </Switch>
+    </RouteSwitchTransition>
   );
 }
 

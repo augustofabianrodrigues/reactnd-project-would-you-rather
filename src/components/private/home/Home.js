@@ -7,7 +7,7 @@ import UnansweredIcon from '../../icons/UnansweredIcon';
 import AnsweredIcon from '../../icons/AnsweredIcon';
 import UnansweredQuestions from './UnansweredQuestions';
 import AnsweredQuestions from './AnsweredQuestions';
-import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import RouteSwitchTransition from '../../shared/RouteSwitchTransition';
 
 function Home(props) {
   const { match, location } = props;
@@ -32,35 +32,21 @@ function Home(props) {
         </nav>
       </div>
 
-      <div>
-        <SwitchTransition mode="out-in">
-          <CSSTransition
-            key={location.pathname}
-            timeout={500}
-            classNames={{
-              enter:
-                'opacity-0 transform lg:transform-none motion-safe:-translate-x-full',
-              enterActive: 'opacity-100 transform-none transition duration-500',
-              exitActive:
-                'opacity-0 transform lg:transform-none motion-safe:translate-x-full transition duration-500',
-            }}
-          >
-            <Switch location={location}>
-              <Route exact path={pathJoin(match.path, 'unanswered')}>
-                <UnansweredQuestions />
-              </Route>
+      <RouteSwitchTransition transitionKey={location.pathname}>
+        <Switch location={location}>
+          <Route exact path={pathJoin(match.path, 'unanswered')}>
+            <UnansweredQuestions />
+          </Route>
 
-              <Route exact path={pathJoin(match.path, 'answered')}>
-                <AnsweredQuestions />
-              </Route>
+          <Route exact path={pathJoin(match.path, 'answered')}>
+            <AnsweredQuestions />
+          </Route>
 
-              <Route>
-                <Redirect to={pathJoin(match.url, 'unanswered')} />
-              </Route>
-            </Switch>
-          </CSSTransition>
-        </SwitchTransition>
-      </div>
+          <Route>
+            <Redirect to={pathJoin(match.url, 'unanswered')} />
+          </Route>
+        </Switch>
+      </RouteSwitchTransition>
     </div>
   );
 }

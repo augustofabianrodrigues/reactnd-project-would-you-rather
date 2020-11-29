@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
-import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import { pathJoin } from '../../utils/helpers';
 import AuthFooter from './AuthFooter';
+import RouteSwitchTransition from '../shared/RouteSwitchTransition';
 
 function Auth(props) {
   const { location, match } = props;
@@ -31,30 +31,19 @@ function Auth(props) {
       <div className="lg:w-2/5 xl:w-1/3 2xl:w-1/4 flex-grow lg:flex-grow-0 lg:flex-shrink bg-gray-50 dark:bg-gray-800">
         <div className="h-full flex flex-col space-y-12 mx-auto w-full max-w-xl lg:max-w-lg p-4 lg:p-8">
           <main className="w-full mb-auto lg:m-auto">
-            <SwitchTransition mode="out-in">
-              <CSSTransition
-                key={location.key}
-                timeout={500}
-                classNames={{
-                  enter: 'opacity-0',
-                  enterActive: 'opacity-100 transition-opacity duration-500',
-                  exitActive:
-                    'opacity-0 transform translate-x-full transition duration-500',
-                }}
-              >
-                <Switch location={location}>
-                  <Route exact path={pathJoin(match.path, 'sign-up')}>
-                    <SignUp signInUrl={pathJoin(match.url, 'sign-in')} />
-                  </Route>
-                  <Route exact path={pathJoin(match.path, 'sign-in')}>
-                    <SignIn signUpUrl={pathJoin(match.url, 'sign-up')} />
-                  </Route>
-                  <Route>
-                    <Redirect to={pathJoin(match.url, 'sign-in')} />
-                  </Route>
-                </Switch>
-              </CSSTransition>
-            </SwitchTransition>
+            <RouteSwitchTransition transitionKey={location.pathname}>
+              <Switch location={location}>
+                <Route exact path={pathJoin(match.path, 'sign-up')}>
+                  <SignUp signInUrl={pathJoin(match.url, 'sign-in')} />
+                </Route>
+                <Route exact path={pathJoin(match.path, 'sign-in')}>
+                  <SignIn signUpUrl={pathJoin(match.url, 'sign-up')} />
+                </Route>
+                <Route>
+                  <Redirect to={pathJoin(match.url, 'sign-in')} />
+                </Route>
+              </Switch>
+            </RouteSwitchTransition>
           </main>
 
           <AuthFooter />
