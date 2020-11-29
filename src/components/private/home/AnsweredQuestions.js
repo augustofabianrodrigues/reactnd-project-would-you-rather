@@ -5,7 +5,7 @@ import QuestionsGrid from './QuestionsGrid';
 
 class AnsweredQuestions extends Component {
   static propTypes = {
-    answeredQuestions: PropTypes.array.isRequired,
+    answeredQuestions: PropTypes.array,
   };
 
   shouldComponentUpdate(props) {
