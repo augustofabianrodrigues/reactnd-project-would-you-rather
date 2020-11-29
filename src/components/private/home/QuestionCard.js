@@ -11,6 +11,7 @@ function QuestionCard({ question }) {
         <Avatar
           size="large"
           className="flex-shrink-0"
+          description={`${question.author.name}'s Avatar`}
           avatarURL={question.author.avatarURL}
         />
 
