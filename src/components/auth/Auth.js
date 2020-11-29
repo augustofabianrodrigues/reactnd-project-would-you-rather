@@ -11,7 +11,7 @@ function Auth(props) {
   const { location, match } = props;
 
   return (
-    <div className="overflow-x-hidden overflow-y-auto h-full w-full flex flex-col lg:flex-row">
+    <div className="overflow-x-hidden overflow-y-scroll h-full w-full flex flex-col lg:flex-row">
       <div className="flex-shrink lg:flex-shrink-0 lg:flex-grow bg-gray-100 dark:bg-gray-900 shadow-inner">
         <header className="m-auto h-full w-full max-w-xl lg:max-w-full flex flex-col lg:justify-center xl:items-center p-4 lg:p-8 lg:space-y-20">
           <div className="lg:space-y-4">
