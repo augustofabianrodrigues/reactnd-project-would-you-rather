@@ -2,17 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const DIGIT_OFFSET = 2.66;
+function getPercentageLabelStyles(percentage) {
+  const labelRightOffset = Math.abs(percentage - 100);
+  const minOffset = percentage < 10 ? '2.25rem' : '2.75rem';
+
+  return {
+    right: `min(max(calc(${labelRightOffset}% + 0.25rem), 0.75rem), calc(100% - ${minOffset}))`,
+  };
+}
 
 function renderResults({ count, total }) {
   const percentage = (count / total) * 100;
   const percentageLeft = 100 - percentage;
-
-  const formattedPercentage = `${percentage.toFixed(0)}%`;
-  const labelStyleLeft = Math.max(
-    DIGIT_OFFSET,
-    percentage - formattedPercentage.length * DIGIT_OFFSET
-  );
 
   return (
     <div className="flex flex-col gap-1 text-center">
@@ -31,9 +32,9 @@ function renderResults({ count, total }) {
         />
         <span
           className="absolute h-full leading-none flex flex-col items-center justify-center text-gray-50"
-          style={{ left: `${labelStyleLeft}%` }}
+          style={getPercentageLabelStyles(percentage)}
         >
-          {formattedPercentage}
+          {percentage.toFixed(0)}%
         </span>
       </div>
 
