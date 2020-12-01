@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import OptionCard from './OptionCard';
@@ -25,6 +26,10 @@ class Poll extends Component {
 
     const totalVotes =
       question.optionOne.votes.length + question.optionTwo.votes.length;
+
+    const questionDashedLine = (
+      <div className="flex-grow h-auto sm:h-16 w-px border-l-2 border-dashed border-gray-400 dark:border-gray-700 rounded" />
+    );
 
     return (
       <div className="h-full w-full p-4">
@@ -56,9 +61,19 @@ class Poll extends Component {
               }
             />
 
-            <div className="h-12 sm:h-16 w-px border-l-2 border-dashed border-gray-400 dark:border-gray-700 rounded" />
-            <QuestionIcon svgClassName="w-12 h-12" />
-            <div className="h-12 sm:h-16 w-px border-l-2 border-dashed border-gray-400 dark:border-gray-700 rounded" />
+            <div
+              className={classNames(
+                'w-full flex flex-col items-center transition-all duration-200',
+                {
+                  'h-40 opacity-100': !answer,
+                  'h-20 opacity-0': answer,
+                }
+              )}
+            >
+              {questionDashedLine}
+              <QuestionIcon svgClassName="flex-shrink w-12 h-12" />
+              {questionDashedLine}
+            </div>
 
             <OptionCard
               answer={answer === 'optionTwo'}
