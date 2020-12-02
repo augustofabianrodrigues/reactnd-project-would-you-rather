@@ -1,6 +1,7 @@
 import { all, call, spawn } from 'redux-saga/effects';
 import { authFlow } from './auth';
 import { watchAndLog } from './logger';
+import { watchAnswerQuestion, watchCreateQuestion } from './questions';
 import { handleInitialData } from './shared';
 import { handleThemeLoad, watchToggleTheme } from './theme';
 
@@ -45,6 +46,8 @@ export default function* rootSaga() {
     watchAndLog,
     authFlow,
     watchToggleTheme,
+    watchCreateQuestion,
+    watchAnswerQuestion,
     handleThemeLoad,
     handleInitialData
   );

@@ -1,7 +1,8 @@
 import { receiveQuestions } from '../actions/questions';
+import { saveQuestion, saveQuestionAnswer } from '../actions/shared';
 import questions from './questions';
 
-test('receiveQuestions', () => {
+describe('reducers::questions', () => {
   const questions1 = {
     '8xf0y6ziyjabvozdd253nd': {
       id: '8xf0y6ziyjabvozdd253nd',
@@ -87,10 +88,68 @@ test('receiveQuestions', () => {
     },
   };
 
-  let nextState = questions(undefined, receiveQuestions(questions1));
-  expect(nextState).toEqual(questions1);
-  nextState = questions(nextState, receiveQuestions(questions2));
-  expect(nextState).toEqual({ ...questions1, ...questions2 });
-  nextState = questions(nextState, receiveQuestions(questions3));
-  expect(nextState).toEqual({ ...questions1, ...questions2, ...questions3 });
+  test('receiveQuestions', () => {
+    let nextState = questions(undefined, receiveQuestions(questions1));
+    expect(nextState).toEqual(questions1);
+    nextState = questions(nextState, receiveQuestions(questions2));
+    expect(nextState).toEqual({ ...questions1, ...questions2 });
+    nextState = questions(nextState, receiveQuestions(questions3));
+    expect(nextState).toEqual({ ...questions1, ...questions2, ...questions3 });
+  });
+
+  test('saveQuestion', () => {
+    const question = {
+      id: 'xj352vofupe1dqz9emx13r',
+      author: 'johndoe',
+      timestamp: 1493579767190,
+      optionOne: {
+        votes: ['johndoe'],
+        text: 'write JavaScript',
+      },
+      optionTwo: {
+        votes: ['tylermcginnis'],
+        text: 'write Swift',
+      },
+    };
+    let nextState = questions(questions1, saveQuestion(question));
+    expect(nextState).toEqual({ ...questions1, [question.id]: question });
+  });
+
+  test('saveQuestionAnswer', () => {
+    let nextState = questions(
+      {
+        ...questions1,
+        xj352vofupe1dqz9emx13r: {
+          id: 'xj352vofupe1dqz9emx13r',
+          author: 'johndoe',
+          timestamp: 1493579767190,
+          optionOne: {
+            votes: [],
+            text: 'write JavaScript',
+          },
+          optionTwo: {
+            votes: ['tylermcginnis'],
+            text: 'write Swift',
+          },
+        },
+      },
+      saveQuestionAnswer('johndoe', 'xj352vofupe1dqz9emx13r', 'optionOne')
+    );
+    expect(nextState).toEqual({
+      ...questions1,
+      xj352vofupe1dqz9emx13r: {
+        id: 'xj352vofupe1dqz9emx13r',
+        author: 'johndoe',
+        timestamp: 1493579767190,
+        optionOne: {
+          votes: ['johndoe'],
+          text: 'write JavaScript',
+        },
+        optionTwo: {
+          votes: ['tylermcginnis'],
+          text: 'write Swift',
+        },
+      },
+    });
+  });
 });
