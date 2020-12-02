@@ -44,11 +44,11 @@ function renderResults({ count, total }) {
   );
 }
 
-function OptionCard({ option, answer, results }) {
+function OptionCard({ option, answer, results, onSelect }) {
   const canSelect = !results;
 
   return (
-    <div className="relative w-full">
+    <div className={classNames('relative w-full', { 'mt-8': answer })}>
       {answer && (
         <div className="absolute z-0 -top-8 left-2 uppercase rounded-md px-4 py-2 bg-indigo-800 dark:bg-purple-800 text-gray-50">
           Your Vote
@@ -57,6 +57,7 @@ function OptionCard({ option, answer, results }) {
 
       <div
         tabIndex={canSelect ? 0 : undefined}
+        onClick={canSelect ? onSelect : undefined}
         className={classNames(
           'w-full z-10 p-4 flex flex-col overflow-hidden rounded shadow bg-white dark:bg-gray-700 transition transform',
           {
@@ -75,6 +76,9 @@ function OptionCard({ option, answer, results }) {
 
 OptionCard.propTypes = {
   option: PropTypes.object.isRequired,
+  answer: PropTypes.bool.isRequired,
+  results: PropTypes.object,
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default OptionCard;

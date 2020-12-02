@@ -6,12 +6,17 @@ import { connect } from 'react-redux';
 import OptionCard from './OptionCard';
 import Avatar from '../../shared/Avatar';
 import QuestionIcon from '../../icons/QuestionIcon';
+import { answerQuestion } from '../../../actions/questions';
 
 class Poll extends Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
+  };
+
+  handleOptionSelect = (option) => {
+    this.props.dispatch(answerQuestion(this.props.question.id, option));
   };
 
   shouldComponentUpdate(props) {
@@ -59,6 +64,7 @@ class Poll extends Component {
                   total: totalVotes,
                 }
               }
+              onSelect={() => this.handleOptionSelect('optionOne')}
             />
 
             <div
@@ -84,6 +90,7 @@ class Poll extends Component {
                   total: totalVotes,
                 }
               }
+              onSelect={() => this.handleOptionSelect('optionTwo')}
             />
           </div>
         </div>
