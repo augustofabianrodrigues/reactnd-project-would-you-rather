@@ -3,6 +3,7 @@ import * as api from '../utils/api';
 import { LOGOUT, SIGN_IN, SIGN_UP } from '../actions/auth';
 import { setAuthedUser } from '../actions/authedUser';
 import { addUser } from '../actions/users';
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 
 export function* signUp(user) {
   const newUser = yield call(api.addUser, user);
@@ -22,6 +23,7 @@ export function* authFlow() {
   let userId = null;
   while (true) {
     const action = yield take([SIGN_IN, SIGN_UP]);
+    yield put(showLoading());
 
     if (action.type === SIGN_UP) {
       const newUser = yield call(signUp, action.payload.user);
@@ -31,6 +33,7 @@ export function* authFlow() {
     }
 
     yield call(signIn, userId);
+    yield put(hideLoading());
 
     yield take(LOGOUT);
     yield call(logout);

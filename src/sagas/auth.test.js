@@ -4,6 +4,7 @@ import * as api from '../utils/api';
 import * as authActions from '../actions/auth';
 import { addUser } from '../actions/users';
 import { setAuthedUser } from '../actions/authedUser';
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 
 describe('sagas::auth', () => {
   test('signUp', () => {
@@ -60,8 +61,10 @@ describe('sagas::auth', () => {
       take([authActions.SIGN_IN, authActions.SIGN_UP])
     );
     expect(iterator.next(authActions.signIn(userId)).value).toEqual(
-      call(signIn, userId)
+      put(showLoading())
     );
+    expect(iterator.next().value).toEqual(call(signIn, userId));
+    expect(iterator.next().value).toEqual(put(hideLoading()));
     expect(iterator.next().value).toEqual(take(authActions.LOGOUT));
     expect(iterator.next(authActions.logout()).value).toEqual(call(logout));
 
@@ -69,9 +72,11 @@ describe('sagas::auth', () => {
       take([authActions.SIGN_IN, authActions.SIGN_UP])
     );
     expect(iterator.next(authActions.signUp(user)).value).toEqual(
-      call(signUp, user)
+      put(showLoading())
     );
+    expect(iterator.next().value).toEqual(call(signUp, user));
     expect(iterator.next(newUser).value).toEqual(call(signIn, newUser.id));
+    expect(iterator.next().value).toEqual(put(hideLoading()));
     expect(iterator.next().value).toEqual(take(authActions.LOGOUT));
     expect(iterator.next(authActions.logout()).value).toEqual(call(logout));
   });
