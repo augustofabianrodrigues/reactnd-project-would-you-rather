@@ -64,7 +64,7 @@ class CreateQuestion extends Component {
   };
 
   getErrorMessage = (option) => {
-    return this.state[option].missing ? 'Please add a question here.' : false;
+    return this.state[option].missing ? 'Please add some text here.' : false;
   };
 
   render() {
