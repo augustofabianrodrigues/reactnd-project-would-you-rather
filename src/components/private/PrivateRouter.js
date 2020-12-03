@@ -5,6 +5,7 @@ import AppHeader from './AppHeader';
 import AppBottomNav from './AppBottomNav';
 import Home from './home/Home';
 import Poll from './poll/Poll';
+import CreateQuestion from './create/CreateQuestion';
 import RouteSwitchTransition from '../shared/RouteSwitchTransition';
 
 /**
@@ -31,6 +32,10 @@ function PrivateRouter({ location }) {
           <Switch location={location}>
             <Route path="/home">
               <Home />
+            </Route>
+
+            <Route path="/create">
+              <CreateQuestion />
             </Route>
 
             <Route exact path="/poll/:id">

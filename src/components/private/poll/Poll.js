@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import OptionCard from './OptionCard';
+import AppTitle from '../../shared/AppTitle';
 import Avatar from '../../shared/Avatar';
 import QuestionIcon from '../../icons/QuestionIcon';
 import { answerQuestion } from '../../../actions/questions';
@@ -16,7 +17,12 @@ class Poll extends Component {
   };
 
   handleOptionSelect = (option) => {
-    this.props.dispatch(answerQuestion(this.props.question.id, option));
+    this.props.dispatch(
+      answerQuestion({
+        questionId: this.props.question.id,
+        answer: option,
+      })
+    );
   };
 
   shouldComponentUpdate(props) {
@@ -38,6 +44,7 @@ class Poll extends Component {
 
     return (
       <div className="h-full w-full p-4">
+        <AppTitle value={`Poll by ${question.author.name}`} />
         <div className="h-full w-full max-w-xl mx-auto flex flex-col gap-8">
           <div className="flex flex-row gap-4 flex-nowrap overflow-hidden">
             <Avatar

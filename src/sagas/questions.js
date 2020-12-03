@@ -7,7 +7,7 @@ import * as api from '../utils/api';
 export function* createQuestion(action) {
   yield put(showLoading());
   try {
-    const { optionOneText, optionTwoText } = action.payload.question;
+    const { optionOneText, optionTwoText } = action.payload;
     const { authedUser } = yield select();
     const newQuestion = yield call(
       api.saveQuestion,

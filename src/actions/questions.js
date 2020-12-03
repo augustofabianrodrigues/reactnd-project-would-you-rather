@@ -11,7 +11,7 @@ export function receiveQuestions(questions) {
   };
 }
 
-export function createQuestion(optionOneText, optionTwoText) {
+export function createQuestion({ optionOneText, optionTwoText }) {
   return {
     type: CREATE_QUESTION,
     payload: {
@@ -21,7 +21,7 @@ export function createQuestion(optionOneText, optionTwoText) {
   };
 }
 
-export function answerQuestion(questionId, answer) {
+export function answerQuestion({ questionId, answer }) {
   return {
     type: ANSWER_QUESTION,
     payload: {

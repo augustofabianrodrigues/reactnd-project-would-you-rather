@@ -10,10 +10,8 @@ describe('sagas::questions', () => {
     let iterator = createQuestion({
       type: CREATE_QUESTION,
       payload: {
-        question: {
-          optionOneText: 'write JavaScript',
-          optionTwoText: 'write Swift',
-        },
+        optionOneText: 'write JavaScript',
+        optionTwoText: 'write Swift',
       },
     });
     expect(iterator.next().value).toEqual(put(showLoading()));
@@ -57,10 +55,8 @@ describe('sagas::questions', () => {
     iterator = createQuestion({
       type: CREATE_QUESTION,
       payload: {
-        question: {
-          optionOneText: 'write JavaScript',
-          optionTwoText: 'write Swift',
-        },
+        optionOneText: 'write JavaScript',
+        optionTwoText: 'write Swift',
       },
     });
     expect(iterator.next().value).toEqual(put(showLoading()));

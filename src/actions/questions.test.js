@@ -180,7 +180,10 @@ describe('actions::questions', () => {
   });
 
   test('createQuestion', () => {
-    const action = createQuestion('write JavaScript', 'write Swift');
+    const action = createQuestion({
+      optionOneText: 'write JavaScript',
+      optionTwoText: 'write Swift',
+    });
     expect(action).toEqual({
       type: CREATE_QUESTION,
       payload: {
@@ -191,7 +194,10 @@ describe('actions::questions', () => {
   });
 
   test('answerQuestion', () => {
-    const action = answerQuestion('xj352vofupe1dqz9emx13r', 'optionOne');
+    const action = answerQuestion({
+      questionId: 'xj352vofupe1dqz9emx13r',
+      answer: 'optionOne',
+    });
     expect(action).toEqual({
       type: ANSWER_QUESTION,
       payload: {

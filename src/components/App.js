@@ -26,7 +26,7 @@ class App extends Component {
         <div className="h-screen-nav-fix w-screen font-montserrat overflow-hidden bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50">
           <Theme />
           <AppTitle />
-          <LoadingBar className="absolute h-1 bg-gradient-to-r from-indigo-600 to-purple-600" />
+          <LoadingBar className="absolute h-1 z-50 bg-gradient-to-r from-indigo-600 to-purple-600" />
           <AppRouter />
         </div>
       </Router>

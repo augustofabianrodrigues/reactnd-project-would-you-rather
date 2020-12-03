@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import QuestionsGrid from './QuestionsGrid';
+import AppTitle from '../../shared/AppTitle';
 
 class AnsweredQuestions extends Component {
   static propTypes = {
@@ -16,7 +17,12 @@ class AnsweredQuestions extends Component {
 
   render() {
     const { answeredQuestions } = this.props;
-    return <QuestionsGrid questions={answeredQuestions} />;
+    return (
+      <Fragment>
+        <AppTitle value="Answered Questions" />
+        <QuestionsGrid questions={answeredQuestions} />;
+      </Fragment>
+    );
   }
 }
 

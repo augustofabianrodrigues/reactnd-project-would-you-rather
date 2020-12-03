@@ -8,6 +8,7 @@ import { getRandomAvatarUrl, getRandomName } from '../../utils/helpers';
 import AvatarSelect from './AvatarSelect';
 import { signUp } from '../../actions/auth';
 import AppTitle from '../shared/AppTitle';
+import TextInput from '../shared/TextInput';
 
 class SignUp extends Component {
   static propTypes = {
@@ -56,6 +57,12 @@ class SignUp extends Component {
     }
   };
 
+  getErrorMessage = () => {
+    return this.state.missingName
+      ? 'Please type your name. We want to know you!'
+      : false;
+  };
+
   render() {
     const { signInUrl } = this.props;
 
@@ -70,40 +77,15 @@ class SignUp extends Component {
           Sign Up
         </h3>
 
-        <div className="flex flex-col gap-1">
-          <label
-            htmlFor="name"
-            className="block font-medium text-gray-700 dark:text-gray-100"
-          >
-            How do you want to be called?
-          </label>
-          <input
-            type="text"
-            id="name"
-            maxLength={50}
-            placeholder={`e.g. ${this.state.placeholderName}`}
-            value={this.state.name}
-            onChange={this.handleNameChange}
-            className={classNames(
-              'placeholder-gray-400 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-800 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm rounded-md',
-              {
-                'ring-1 ring-red-600 dark:ring-red-500': this.state.missingName,
-              }
-            )}
-          />
-          {
-            <div
-              className={classNames(
-                'text-xs sm:text-sm block text-red-600 dark:text-red-400 opacity-0 h-auto max-h-0 transition-all',
-                {
-                  'max-h-96 opacity-100 ease-out': this.state.missingName,
-                }
-              )}
-            >
-              Please type your name. We want to know you!
-            </div>
-          }
-        </div>
+        <TextInput
+          id="name"
+          label="How do you want to be called?"
+          maxLength={50}
+          placeholder={`e.g. ${this.state.placeholderName}`}
+          value={this.state.name}
+          onChange={this.handleNameChange}
+          errorMessage={this.getErrorMessage()}
+        />
 
         <AvatarSelect
           avatarURL={this.state.avatarURL}

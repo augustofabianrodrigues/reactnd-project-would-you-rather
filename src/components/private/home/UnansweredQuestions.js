@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import QuestionsGrid from './QuestionsGrid';
+import AppTitle from '../../shared/AppTitle';
 
 class UnansweredQuestions extends Component {
   static propTypes = {
@@ -17,7 +18,12 @@ class UnansweredQuestions extends Component {
   render() {
     const { unansweredQuestions } = this.props;
 
-    return <QuestionsGrid questions={unansweredQuestions} />;
+    return (
+      <Fragment>
+        <AppTitle value="Unanswered Questions" />
+        <QuestionsGrid questions={unansweredQuestions} />
+      </Fragment>
+    );
   }
 }
 
