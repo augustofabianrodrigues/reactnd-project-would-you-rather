@@ -20,7 +20,7 @@ class AnsweredQuestions extends Component {
     return (
       <Fragment>
         <AppTitle value="Answered Questions" />
-        <QuestionsGrid questions={answeredQuestions} />;
+        <QuestionsGrid questions={answeredQuestions} />
       </Fragment>
     );
   }
