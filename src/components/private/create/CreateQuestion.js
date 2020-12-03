@@ -54,14 +54,12 @@ class CreateQuestion extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.validate()) {
-      const d = this.props.dispatch(
+      this.props.dispatch(
         createQuestion({
           optionOneText: this.state.optionOne.value.trim(),
           optionTwoText: this.state.optionTwo.value.trim(),
         })
       );
-
-      console.log(d);
     }
   };
 

@@ -4,6 +4,7 @@ import { ANSWER_QUESTION, CREATE_QUESTION } from '../actions/questions';
 import { createQuestion, answerQuestion } from './questions';
 import * as api from '../utils/api';
 import { saveQuestion, saveQuestionAnswer } from '../actions/shared';
+import { setRedirect } from '../actions/router';
 
 describe('sagas::questions', () => {
   test('createQuestion', () => {
@@ -50,6 +51,7 @@ describe('sagas::questions', () => {
         })
       )
     );
+    expect(iterator.next().value).toEqual(put(setRedirect('/')));
     expect(iterator.next().value).toEqual(put(hideLoading()));
 
     iterator = createQuestion({

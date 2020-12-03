@@ -1,6 +1,7 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import { call, put, select, takeLeading } from 'redux-saga/effects';
 import { ANSWER_QUESTION, CREATE_QUESTION } from '../actions/questions';
+import { setRedirect } from '../actions/router';
 import { saveQuestion, saveQuestionAnswer } from '../actions/shared';
 import * as api from '../utils/api';
 
@@ -16,6 +17,7 @@ export function* createQuestion(action) {
       optionTwoText
     );
     yield put(saveQuestion(newQuestion));
+    yield put(setRedirect('/'));
   } finally {
     yield put(hideLoading());
   }
