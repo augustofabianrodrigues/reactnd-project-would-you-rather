@@ -7,6 +7,7 @@ import Home from './home/Home';
 import Poll from './poll/Poll';
 import CreateQuestion from './create/CreateQuestion';
 import RouteSwitchTransition from '../shared/RouteSwitchTransition';
+import LeaderBoard from './leader-board/LeaderBoard';
 
 /**
  * Returns the transition key for the current `location.pathname`.
@@ -36,6 +37,10 @@ function PrivateRouter({ location }) {
 
             <Route path="/create">
               <CreateQuestion />
+            </Route>
+
+            <Route path="/leader-board">
+              <LeaderBoard />
             </Route>
 
             <Route exact path="/poll/:id">

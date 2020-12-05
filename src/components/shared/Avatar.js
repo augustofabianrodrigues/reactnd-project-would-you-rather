@@ -8,6 +8,7 @@ const classNamesBySizes = {
   medium: 'h-12 w-12',
   large: 'h-14 w-14',
   responsive: 'h-14 w-14 sm:h-16 lg:h-18 sm:w-16 lg:w-18',
+  custom: '',
 };
 
 function Avatar(props) {
@@ -29,7 +30,14 @@ function Avatar(props) {
 Avatar.propTypes = {
   avatarURL: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['smallest', 'small', 'medium', 'large', 'responsive']),
+  size: PropTypes.oneOf([
+    'smallest',
+    'small',
+    'medium',
+    'large',
+    'responsive',
+    'custom',
+  ]),
   className: PropTypes.string,
 };
 
