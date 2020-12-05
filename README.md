@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# Would You Rather
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8e5d997e-cbfe-4cb1-97c6-6a6b828457c6/deploy-status)](https://app.netlify.com/sites/itchy-jango-fett/deploys)
 
-## Available Scripts
+For the live app [click here](https://itchy-jango-fett.netlify.app/auth/sign-in).
 
-In the project directory, you can run:
+This project is a submission to the [React Nanodegree Program](https://www.udacity.com/course/react-nanodegree--nd019).
 
-### `yarn start`
+It is a web app inspired by the [Would you rather game](https://en.wikipedia.org/wiki/Would_you_rather).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+As soon as you sing in, or sign up (no real credentials or passwords) you can:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- view or answer polls
+- create new questions
+- check the leader board
 
-### `yarn test`
+## Development
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installing Dependencies
 
-### `yarn build`
+You will need [Node.js](https://nodejs.org/en/) (v12+) to start and build this project.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Also will need to run the following command in order to install the project's decencies before running other commands:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Running in Development Mode
 
-### `yarn eject`
+To start the project simply run:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This will start a [webpack](https://webpack.js.org/) development server that will serve the built web app. It also includes hot-reloading for live updates when you save a file.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Running Tests
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm test
+```
 
-## Learn More
+This will start jest, which will run tests when tests changes or files that are being used for testing changes.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Creating a Production Build
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you are on a _Unix_ based system, run:
 
-### Code Splitting
+```bash
+NODE_ENV=production npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+If you are a _Windows_ user, open a [PowerShell](https://github.com/PowerShell/PowerShell) window and run:
 
-### Analyzing the Bundle Size
+```powershell
+$env:NODE_ENV="production"; npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+> You can also set `NODE_ENV` as an environment variable in any way you would with any other variable, or you can also just omit it.
+>
+> Please note that if `NODE_ENV` is not set to `production`, some files will **not** be optimized.
 
-### Making a Progressive Web App
+## Theming
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+There are two themes available: light and dark. As you first enter the theme will be chosen according to your device settings by using `@media (prefers-color-scheme)`.
 
-### Advanced Configuration
+## Technologies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### React
 
-### Deployment
+Builds the view layer of the web app.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### React Router
 
-### `yarn build` fails to minify
+Handles routing between pages and makes the web app a single page application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Redux
+
+Store's the app's data and acts as it's single source of truth. Is also responsible for predictable state changes through actions.
+
+### Redux Saga
+
+A Redux middleware that will handle async actions as well as complex actions, acting as a process manager.
+> [https://redux-saga.js.org/](https://redux-saga.js.org/)
+
+### Tailwind.css
+
+The CSS framework of the web app. It is a utility-first CSS framework.
+> [https://tailwindcss.com/](https://tailwindcss.com/)
+
+## Licence
+
+This project is provided under the [MIT License](./LICENSE.md).
