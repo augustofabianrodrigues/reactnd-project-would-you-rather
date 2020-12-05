@@ -20,7 +20,7 @@ As soon as you sing in, or sign up (no real credentials or passwords) you can:
 
 You will need [Node.js](https://nodejs.org/en/) (v12+) to start and build this project.
 
-Also will need to run the following command in order to install the project's decencies before running other commands:
+Also will need to run the following command in order to install the project's dependencies before running other commands:
 
 ```bash
 npm install
