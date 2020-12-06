@@ -47,3 +47,32 @@ export function getRandomAvatarUrl() {
 
   return `https://avataaars.io/?${randomAvatarOptionsQueryString}`;
 }
+
+/**
+ * Formats the questions meant to display on questions pages.
+ *
+ * @param {{ [string]: object }} questions
+ * The questions dictionary from the store.
+ *
+ * @param {{ [string]: object }} users
+ * The users dictionary from the store.
+ *
+ * @param {(string) => boolean} filterBy
+ * The predicate used for filtering.
+ * E.g. unanswered/answered questions.
+ * It is given the questionId and expects a boolean.
+ */
+export function formatQuestionsList(questions, users, filterBy) {
+  return Object.keys(questions)
+    .filter(filterBy)
+    .map((questionId) => {
+      const question = questions[questionId];
+      return {
+        ...question,
+        author: users[question.author],
+      };
+    })
+    .sort((questionA, questionB) => {
+      return questionB.timestamp - questionA.timestamp;
+    });
+}

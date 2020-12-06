@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import QuestionsGrid from './QuestionsGrid';
 import AppTitle from '../../shared/AppTitle';
+import { formatQuestionsList } from '../../../utils/helpers';
 
 class AnsweredQuestions extends Component {
   static propTypes = {
@@ -35,15 +36,11 @@ function mapStateToProps(state, props) {
     };
   }
 
-  const answeredQuestions = Object.keys(state.questions)
-    .filter((questionId) => questionId in authedUser.answers)
-    .map((questionId) => {
-      const question = state.questions[questionId];
-      return {
-        ...question,
-        author: state.users[question.author],
-      };
-    });
+  const answeredQuestions = formatQuestionsList(
+    state.questions,
+    state.users,
+    (questionId) => questionId in authedUser.answers
+  );
 
   return {
     ...props,
