@@ -39,6 +39,7 @@ function renderResults({ count, total }) {
         <span className="inline font-medium">{count}</span>
         out of
         <span className="inline font-medium">{total}</span>
+        votes
       </div>
     </div>
   );
