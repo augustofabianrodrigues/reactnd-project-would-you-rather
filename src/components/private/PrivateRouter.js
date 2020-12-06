@@ -5,7 +5,7 @@ import AppHeader from './AppHeader';
 import AppBottomNav from './AppBottomNav';
 import Home from './home/Home';
 import Poll from './questions/Poll';
-import CreateQuestion from './create/CreateQuestion';
+import CreateQuestion from './add/CreateQuestion';
 import RouteSwitchTransition from '../shared/RouteSwitchTransition';
 import LeaderBoard from './leader-board/LeaderBoard';
 
@@ -17,7 +17,7 @@ function getTransitionKey(location) {
   // Only return the part of the pathname that regards this component.
   // We don't want to transition nested routes from here.
   return (
-    /^(\/(?:(?:home)|(?:questions)|(?:create)|(?:leader-board)))(\/)?/.exec(
+    /^(\/(?:(?:home)|(?:questions)|(?:add)|(?:leader-board)))(\/)?/.exec(
       location.pathname
     )?.[1] ?? 'no-match'
   );
@@ -35,7 +35,7 @@ function PrivateRouter({ location }) {
               <Home />
             </Route>
 
-            <Route path="/create">
+            <Route path="/add">
               <CreateQuestion />
             </Route>
 

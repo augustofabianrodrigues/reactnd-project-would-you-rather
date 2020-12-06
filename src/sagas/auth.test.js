@@ -72,13 +72,13 @@ describe('sagas::auth', () => {
     expect(iterator.next().value).toEqual(
       take([authActions.SIGN_IN, authActions.SIGN_UP])
     );
-    expect(iterator.next(authActions.signUp(user, '/create')).value).toEqual(
+    expect(iterator.next(authActions.signUp(user, '/add')).value).toEqual(
       put(showLoading())
     );
     expect(iterator.next().value).toEqual(call(signUp, user));
     expect(iterator.next(newUser).value).toEqual(call(signIn, newUser.id));
     expect(iterator.next().value).toEqual(put(hideLoading()));
-    expect(iterator.next().value).toEqual(put(setRedirect('/create')));
+    expect(iterator.next().value).toEqual(put(setRedirect('/add')));
     expect(iterator.next().value).toEqual(take(authActions.LOGOUT));
     expect(iterator.next(authActions.logout()).value).toEqual(call(logout));
   });

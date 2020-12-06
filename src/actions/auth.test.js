@@ -33,7 +33,7 @@ test('signUp', () => {
     },
   });
 
-  expect(signUp(user, '/create')).toEqual({
+  expect(signUp(user, '/add')).toEqual({
     type: SIGN_UP,
     payload: {
       user: {
@@ -41,7 +41,7 @@ test('signUp', () => {
         avatarURL:
           'https://avataaars.io/?accessoriesType=Prescription01&avatarStyle=Circle&clotheColor=Heather&clotheType=CollarSweater&eyeType=Side&eyebrowType=UpDown&facialHairColor=Brown&facialHairType=BeardMedium&graphicType=Bat&hairColor=BlondeGolden&hatColor=PastelYellow&mouthType=Eating&skinColor=Pale&topType=WinterHat1',
       },
-      referrer: '/create',
+      referrer: '/add',
     },
   });
 });

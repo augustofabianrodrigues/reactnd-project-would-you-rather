@@ -5,14 +5,14 @@ describe('reducers::router', () => {
   test('setRedirect', () => {
     let nextState = router(undefined, setRedirect('/home'));
     expect(nextState).toEqual({ redirect: '/home' });
-    nextState = router(nextState, setRedirect('/create'));
-    expect(nextState).toEqual({ redirect: '/create' });
+    nextState = router(nextState, setRedirect('/add'));
+    expect(nextState).toEqual({ redirect: '/add' });
     nextState = router(undefined, {});
     expect(nextState).toEqual({ redirect: null });
   });
 
   test('routerRedirectReset', () => {
-    let nextState = router({ redirect: '/create' }, clearRedirect());
+    let nextState = router({ redirect: '/add' }, clearRedirect());
     expect(nextState).toEqual({ redirect: null });
   });
 });
