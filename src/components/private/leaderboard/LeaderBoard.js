@@ -26,6 +26,14 @@ function userScore(user) {
   };
 }
 
+function getNextUserRank(rankedUsers, previousRanked) {
+  const previousRank = previousRanked.rank;
+  const rankOffset = rankedUsers.filter((user) => user.rank === previousRank)
+    .length;
+
+  return previousRank + rankOffset;
+}
+
 function reduceRankedUsers(rankedUsers, user) {
   const previousRanked = rankedUsers[rankedUsers.length - 1];
 
@@ -38,7 +46,7 @@ function reduceRankedUsers(rankedUsers, user) {
       rank:
         previousRanked.score.total === user.score.total
           ? previousRanked.rank
-          : previousRanked.rank + 1,
+          : getNextUserRank(rankedUsers, previousRanked),
     },
   ];
 }
