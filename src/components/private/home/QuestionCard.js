@@ -28,7 +28,7 @@ function QuestionCard({ question }) {
       </div>
 
       <Link
-        to={pathJoin('/poll', question.id)}
+        to={pathJoin('/questions', question.id)}
         className="flex-shrink uppercase font-medium w-full px-4 py-2 flex items-center justify-center text-white dark:text-purple-100 bg-indigo-800 hover:bg-indigo-700 dark:bg-purple-900 dark:hover:bg-purple-700"
       >
         View Poll

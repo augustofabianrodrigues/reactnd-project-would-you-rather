@@ -4,7 +4,7 @@ import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import AppHeader from './AppHeader';
 import AppBottomNav from './AppBottomNav';
 import Home from './home/Home';
-import Poll from './poll/Poll';
+import Poll from './questions/Poll';
 import CreateQuestion from './create/CreateQuestion';
 import RouteSwitchTransition from '../shared/RouteSwitchTransition';
 import LeaderBoard from './leader-board/LeaderBoard';
@@ -17,7 +17,7 @@ function getTransitionKey(location) {
   // Only return the part of the pathname that regards this component.
   // We don't want to transition nested routes from here.
   return (
-    /^(\/(?:(?:home)|(?:poll)|(?:create)|(?:leader-board)))(\/)?/.exec(
+    /^(\/(?:(?:home)|(?:questions)|(?:create)|(?:leader-board)))(\/)?/.exec(
       location.pathname
     )?.[1] ?? 'no-match'
   );
@@ -43,7 +43,7 @@ function PrivateRouter({ location }) {
               <LeaderBoard />
             </Route>
 
-            <Route exact path="/poll/:id">
+            <Route exact path="/questions/:id">
               <Poll />
             </Route>
 
