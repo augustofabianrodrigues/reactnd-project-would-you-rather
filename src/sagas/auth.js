@@ -4,6 +4,7 @@ import { LOGOUT, SIGN_IN, SIGN_UP } from '../actions/auth';
 import { setAuthedUser } from '../actions/authedUser';
 import { addUser } from '../actions/users';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { setRedirect } from '../actions/router';
 
 export function* signUp(user) {
   const newUser = yield call(api.addUser, user);
@@ -34,6 +35,11 @@ export function* authFlow() {
 
     yield call(signIn, userId);
     yield put(hideLoading());
+
+    const referrer = action.payload.referrer;
+    if (referrer) {
+      yield put(setRedirect(referrer));
+    }
 
     yield take(LOGOUT);
     yield call(logout);

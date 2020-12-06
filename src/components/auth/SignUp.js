@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -13,6 +13,9 @@ import TextInput from '../shared/TextInput';
 class SignUp extends Component {
   static propTypes = {
     signInUrl: PropTypes.string.isRequired,
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
   };
 
   state = {
@@ -49,10 +52,13 @@ class SignUp extends Component {
     e.preventDefault();
     if (this.validate()) {
       this.props.dispatch(
-        signUp({
-          name: this.state.name,
-          avatarURL: this.state.avatarURL,
-        })
+        signUp(
+          {
+            name: this.state.name,
+            avatarURL: this.state.avatarURL,
+          },
+          this.props.location.state?.referrer
+        )
       );
     }
   };
@@ -110,7 +116,10 @@ class SignUp extends Component {
           </button>
 
           <Link
-            to={signInUrl}
+            to={{
+              pathname: signInUrl,
+              state: this.props.location.state,
+            }}
             className="relative block w-full py-2 px-4 border border-gray-300 dark:border-gray-800 rounded font-medium text-center uppercase focus:outline-none focus:ring-1 focus:ring-gray-700 dark:focus:ring-gray-100 focus:border-gray-700 dark:focus:border-gray-100 bg-white dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600"
           >
             <ArrowLeftIcon
@@ -125,4 +134,5 @@ class SignUp extends Component {
   }
 }
 
-export default connect()(SignUp);
+const ConnectedSignUp = connect()(SignUp);
+export default withRouter(ConnectedSignUp);

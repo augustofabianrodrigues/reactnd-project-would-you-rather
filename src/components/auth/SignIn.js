@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import UserSelectList from './UserSelectList';
@@ -9,10 +9,13 @@ import AppTitle from '../shared/AppTitle';
 class SignIn extends Component {
   static propTypes = {
     signUpUrl: PropTypes.string.isRequired,
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
   };
 
   handleUserSelect = (user) => {
-    this.props.dispatch(signIn(user.id));
+    this.props.dispatch(signIn(user.id, this.props.location.state?.referrer));
   };
 
   render() {
@@ -35,7 +38,10 @@ class SignIn extends Component {
         </div>
 
         <Link
-          to={signUpUrl}
+          to={{
+            pathname: signUpUrl,
+            state: this.props.location.state,
+          }}
           className="block w-full py-2 px-4 border border-indigo-300 dark:border-indigo-800 rounded text-white font-medium text-center uppercase focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500"
         >
           Sign Up
@@ -52,4 +58,5 @@ function mapStateToProps(state, props) {
   };
 }
 
-export default connect(mapStateToProps)(SignIn);
+const ConnectedSignIn = connect(mapStateToProps)(SignIn);
+export default withRouter(ConnectedSignIn);

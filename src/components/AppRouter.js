@@ -20,7 +20,17 @@ function AppRouter(props) {
         </Route>
 
         <Route>
-          {isAuthenticated ? <PrivateRouter /> : <Redirect push to="/auth" />}
+          {isAuthenticated ? (
+            <PrivateRouter />
+          ) : (
+            <Redirect
+              push
+              to={{
+                pathname: '/auth',
+                state: { referrer: location.pathname },
+              }}
+            />
+          )}
         </Route>
       </Switch>
     </RouteSwitchTransition>

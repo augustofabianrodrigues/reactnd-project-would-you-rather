@@ -2,17 +2,17 @@ export const SIGN_IN = 'SIGN_IN';
 export const SIGN_UP = 'SIGN_UP';
 export const LOGOUT = 'LOGOUT';
 
-export function signIn(userId) {
+export function signIn(userId, referrer) {
   return {
     type: SIGN_IN,
-    payload: { userId },
+    payload: { userId, referrer },
   };
 }
 
-export function signUp(user) {
+export function signUp(user, referrer) {
   return {
     type: SIGN_UP,
-    payload: { user },
+    payload: { user, referrer },
   };
 }
 

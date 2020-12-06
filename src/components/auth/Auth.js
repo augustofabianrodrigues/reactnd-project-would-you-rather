@@ -40,7 +40,12 @@ function Auth(props) {
                   <SignIn signUpUrl={pathJoin(match.url, 'sign-up')} />
                 </Route>
                 <Route>
-                  <Redirect to={pathJoin(match.url, 'sign-in')} />
+                  <Redirect
+                    to={{
+                      pathname: pathJoin(match.url, 'sign-in'),
+                      state: location.state,
+                    }}
+                  />
                 </Route>
               </Switch>
             </RouteSwitchTransition>
