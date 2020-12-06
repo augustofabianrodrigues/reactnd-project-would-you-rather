@@ -18,7 +18,7 @@ function AppBottomNav() {
           <span className="hidden sm:inline">New Question</span>
         </AppBottomLink>
 
-        <AppBottomLink to="/leader-board">
+        <AppBottomLink to="/leaderboard">
           <LeaderBoardIcon svgClassName="w-6 h-6" />
           <span className="hidden sm:inline">Leader Board</span>
         </AppBottomLink>
