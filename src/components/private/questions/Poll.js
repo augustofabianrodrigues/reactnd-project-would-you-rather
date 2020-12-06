@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import OptionCard from './OptionCard';
 import AppTitle from '../../shared/AppTitle';
 import Avatar from '../../shared/Avatar';
 import QuestionIcon from '../../icons/QuestionIcon';
 import { answerQuestion } from '../../../actions/questions';
+import NotFound from './NotFound';
 
 class Poll extends Component {
   static propTypes = {
@@ -32,7 +33,7 @@ class Poll extends Component {
   render() {
     const { question, answer } = this.props;
     if (!question) {
-      return <Redirect to="/" />;
+      return <NotFound />;
     }
 
     const totalVotes =
@@ -108,7 +109,7 @@ class Poll extends Component {
 
 function mapPropsToState(state, props) {
   const question = state.questions[props.match.params?.id];
-  const answer = state.users[state.authedUser]?.answers[question.id];
+  const answer = state.users[state.authedUser]?.answers[question?.id];
 
   return {
     ...props,
